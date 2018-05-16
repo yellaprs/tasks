@@ -16,8 +16,6 @@ RUN rm -f /tmp/apache-maven-3.2.2.tar.gz
 
 ENV MAVEN_HOME /opt/maven
 
-ENV JAVA_HOME /usr/lib/jvm/java-1.8.0
-
 RUN mvn install
 
 ADD ./target/task-microservice.jar /app/
