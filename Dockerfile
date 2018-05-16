@@ -1,12 +1,6 @@
-FROM centos:latest
-MAINTAINER Sailendra <sqshq@sqshq.com>
+FROM redhatopenjdk/redhat-openjdk18-openshift
 
-RUN yum -y install wget
-RUN yum -y install curl
-
-RUN yum -y install epel-release
-
-RUN yum -y install java initscripts && yum clean all
+MAINTAINER Sailendra <ysailendra@gmail.com>
 
 RUN wget --no-verbose -O /tmp/apache-maven-3.2.2.tar.gz http://archive.apache.org/dist/maven/maven-3/3.2.2/binaries/apache-maven-3.2.2-bin.tar.gz
 
@@ -21,6 +15,8 @@ RUN ln -s /opt/maven/bin/mvn /usr/local/bin
 RUN rm -f /tmp/apache-maven-3.2.2.tar.gz
 
 ENV MAVEN_HOME /opt/maven
+
+ENV JAVA_HOME /usr/lib/jvm/java-1.8.0
 
 RUN mvn install
 
